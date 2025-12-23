@@ -15,11 +15,6 @@ public class ApiTesterController {
     @Autowired
     private ApiTesterService apiTesterService;
 
-    @GetMapping("/")
-    public String index() {
-        return "Hello World";
-    }
-
     @PostMapping("/send")
     public ResponseEntity<String> sendRequest(@RequestBody ApiRequestDto apiRequestDto) {
         return apiTesterService.executeRequest(apiRequestDto);
