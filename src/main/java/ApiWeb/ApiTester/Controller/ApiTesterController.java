@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "http://localhost:5173/")
 @RestController
-@RequestMapping("/api/tester")
+@RequestMapping("https://apitester-backend-production.up.railway.app/api/tester")
 public class ApiTesterController {
 
     @Autowired
