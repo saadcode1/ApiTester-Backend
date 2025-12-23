@@ -9,14 +9,13 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/api/tester")
 @CrossOrigin(origins = "*")
 public class ApiTesterController {
 
     @Autowired
     private ApiTesterService apiTesterService;
 
-    @GetMapping
+    @GetMapping("/")
     public String index() {
         return "Hello World";
     }
