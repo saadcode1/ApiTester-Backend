@@ -7,9 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "http://localhost:5173/")
+
 @RestController
-@RequestMapping("https://apitester-backend-production.up.railway.app/api/tester")
+@RequestMapping("api/tester")
+@CrossOrigin(origins = "*")
 public class ApiTesterController {
 
     @Autowired
