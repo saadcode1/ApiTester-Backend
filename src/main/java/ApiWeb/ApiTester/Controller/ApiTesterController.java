@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "https://api-tes-8sc7p43y8-saadcode1s-projects.vercel.app")
 public class ApiTesterController {
 
     @Autowired
