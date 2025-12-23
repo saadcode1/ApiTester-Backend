@@ -16,7 +16,7 @@ public class ApiTesterController {
     @Autowired
     private ApiTesterService apiTesterService;
 
-    @GetMapping("/")
+    @GetMapping
     public String index() {
         return "Hello World";
     }
