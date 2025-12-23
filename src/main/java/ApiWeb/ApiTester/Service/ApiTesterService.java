@@ -16,16 +16,34 @@ public class ApiTesterService {
     private RestTemplate restTemplate;
 
     public ResponseEntity<String> executeRequest(ApiRequestDto req){
+
         HttpHeaders headers = new HttpHeaders();
         if(req.getHeaders() != null){
             req.getHeaders().forEach(headers::set);
         }
-        HttpEntity<String> entity = new HttpEntity<>(req.getBody(), headers);
 
-        ResponseEntity<String> response = restTemplate.exchange(req.getUrl(),
-                HttpMethod.valueOf(req.getMethod()), entity, String.class);
+        HttpMethod method = HttpMethod.valueOf(req.getMethod().toUpperCase());
 
-        return response;
+        HttpEntity<String> entity;
 
+        // ******** MOST IMPORTANT FIX ********
+        if(method == HttpMethod.GET || method == HttpMethod.DELETE){
+            entity = new HttpEntity<>(headers);   // NO BODY
+        } else {
+            entity = new HttpEntity<>(req.getBody(), headers);
+        }
+
+        try {
+            return restTemplate.exchange(
+                    req.getUrl(),
+                    method,
+                    entity,
+                    String.class
+            );
+        } catch (Exception e){
+            return ResponseEntity
+                    .status(500)
+                    .body("Server Error: " + e.getMessage());
+        }
     }
 }
